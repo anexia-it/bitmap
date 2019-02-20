@@ -15,4 +15,8 @@ branches:
     
 script:
   - /bin/bash ./scripts/ci_checks.sh
+
+after_success:
+  - mv ./cover/coverage.cov ./coverage.txt
+  - bash <(curl -s https://codecov.io/bash)
   
