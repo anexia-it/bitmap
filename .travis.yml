@@ -1,0 +1,18 @@
+language: go
+sudo: false
+
+matrix:
+  include:
+    - go: "1.10"
+    - go: "1.11"
+      script: diff -u <(echo -n) <(gofmt -d -s .)
+    - go: "tip"
+
+branches:
+  only:
+    - master
+    - /v\d+\.\d+\.\d+/
+    
+script:
+  - /bin/bash ./scripts/ci_checks.sh
+  
